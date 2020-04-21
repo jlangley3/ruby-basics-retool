@@ -3,7 +3,7 @@
 #########################
 
 CAMPUS = {
-  "name": "DC",
+  name: "DC",
   "address": "1440 G St NW, Washington, DC 20005",
 }
 DATE = "Nov 20, 2019"
@@ -30,9 +30,11 @@ def calculate_recipients
   # write a method that will return an array of only the subscribers who haven't unsubscribed
 end
 
-def first_n_articles(number_of_articles
-  ARTICLES.first(number_of_articles)
+def first_n_articles(number_of_articles)
+  ARTICLES.first(number_of_articles.to_i)
+
 end
+
 
 def print_recipients
   # Write a method that uses the output of calculate_recipients
@@ -52,7 +54,7 @@ def print_many_articles(articles)
 end
 
 def format_campus_location(campus)
-  "Flatiron #{campus["name"]}"
+  "Flatiron #{campus[:name]}"
 end
 
 def format_subject
@@ -79,7 +81,7 @@ def print_newsletter(number)
   puts format_footer(CAMPUS)
 
   end
-end
+
 
 def run
   # We want our program to print three articles by default,
