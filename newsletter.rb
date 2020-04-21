@@ -27,12 +27,14 @@ ARTICLES = [
 
 def calculate_recipients
   
-  SUBSCRIBERS.select {|address| !UNSUBSCRIBED.include?(address)}
+  SUBSCRIBERS.find_all do |email|
+    !UNSUBSCRIBED.include?(email)
   #puts SUBSCRIBERS
   # Using the SUBSCRIBERS and UNSUBSCRIBED arrays,
   # write a method that will return an array of only the subscribers who haven't unsubscribed
   #return an array
   #None of the emails in the `UNSUBSCRIBED` array should appear in the results array returned.
+end
 end
 
 def first_n_articles(number_of_articles)
@@ -50,7 +52,7 @@ def print_recipients
 end
 
 def print_one_article(article)
-     print "#{article[:title]}\nby #{article[:author]}\n#{article[:text]}\n\n"
+     print "#{article[:title]}\nby: #{article[:author]}\n#{article[:text]}\n\n"
   # Write a method that will take an article hash
   # and print the title, author and text as a formatted string
   # See the README/sample output for examples
@@ -58,9 +60,10 @@ end
 
 
 def print_many_articles(articles)
-  #articles.each do |article|
-    #print_one_article
-    articles.each {|article| print_one_article(article)}
+  articles.each do |article|
+    print_one_article(article)
+  end
+   
   # Write a method that will take in an array of article hashes
   # and format each one using the print_one_article method
 end
